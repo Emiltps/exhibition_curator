@@ -21,9 +21,9 @@ export function useArtworks() {
       const res = await fetch(`/api/search?term=${encodeURIComponent(term)}`);
       const json = await res.json();
 
-      // The Met API returns objectIDs first; you might want to fetch details for each one later.
-      setArtworks(json.data.objectIDs?.slice(0, 10) || []);
-    } catch {
+      setArtworks(json.artworks || []);
+    } catch (err) {
+      console.error(err);
       setError("Failed to load artworks");
     } finally {
       setLoading(false);
