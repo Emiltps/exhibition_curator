@@ -27,6 +27,10 @@ export default function ArtworkGrid({ artworks }: Props) {
               </div>
             )}
             <p className="mt-2 text-sm text-center">{art.title}</p>
+            <p className="text-xs text-center text-gray-500">{art.artist}</p>
+            <span className="absolute top-2 right-2 bg-black text-white text-[10px] px-1 py-0.5 rounded">
+              {art.source}
+            </span>
           </div>
         );
       })}

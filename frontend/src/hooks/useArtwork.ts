@@ -7,6 +7,7 @@ export interface Artwork {
   date: string;
   primaryImageSmall: string;
   objectURL: string;
+  source: string;
 }
 
 export function useArtworks() {
