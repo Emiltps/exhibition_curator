@@ -5,16 +5,14 @@ interface Props {
 }
 
 export default function ArtworkGrid({ artworks }: Props) {
-  if (!artworks.length) {
-    return <p className="text-center text-gray-500 mt-4">No artworks yet.</p>;
-  }
-
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4">
-      {artworks.map((art) => {
-        console.log(art);
-        return (
-          <div key={art.objectID} className="bg-white rounded-xl shadow p-2">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      {artworks.map((art) => (
+        <div
+          key={art.objectID}
+          className="bg-white rounded-xl shadow p-2 relative"
+        >
+          <a href={art.objectURL} target="_blank" rel="noopener noreferrer">
             {art.primaryImageSmall ? (
               <img
                 src={art.primaryImageSmall}
@@ -26,14 +24,14 @@ export default function ArtworkGrid({ artworks }: Props) {
                 No image
               </div>
             )}
-            <p className="mt-2 text-sm text-center">{art.title}</p>
-            <p className="text-xs text-center text-gray-500">{art.artist}</p>
-            <span className="absolute top-2 right-2 bg-black text-white text-[10px] px-1 py-0.5 rounded">
-              {art.source}
-            </span>
-          </div>
-        );
-      })}
+          </a>
+          <p className="mt-2 text-sm text-center font-semibold">{art.title}</p>
+          <p className="text-xs text-center text-gray-500">{art.artist}</p>
+          <span className="absolute top-2 right-2 bg-black text-white text-[10px] px-1 py-0.5 rounded">
+            {art.source}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }
