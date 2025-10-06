@@ -2,15 +2,17 @@ import type { Artwork } from "../hooks/useArtwork";
 
 interface Props {
   artworks: Artwork[];
+  onSelect?: (art: Artwork) => void;
 }
 
-export default function ArtworkGrid({ artworks }: Props) {
+export default function ArtworkGrid({ artworks, onSelect }: Props) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
       {artworks.map((art) => (
         <div
           key={art.objectID}
           className="bg-white rounded-xl shadow p-2 relative"
+          onClick={() => onSelect?.(art)}
         >
           <a href={art.objectURL} target="_blank" rel="noopener noreferrer">
             {art.primaryImageSmall ? (

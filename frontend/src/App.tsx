@@ -39,7 +39,22 @@ export default function App() {
         {loading && <p className="text-center text-gray-500">Loading...</p>}
         {error && <p className="text-center text-red-500">{error}</p>}
 
-        <ArtworkGrid artworks={artworks} />
+        {artworks.length > 0 && (
+          <>
+            <h2 className="text-xl font-semibold mb-2">Search Results</h2>
+            <ArtworkGrid artworks={artworks} onSelect={addArtwork} />
+          </>
+        )}
+
+        {collection.length > 0 && (
+          <>
+            <h2 className="text-xl font-semibold mb-2">Your Exhibition</h2>
+            <ArtworkGrid
+              artworks={collection}
+              onSelect={(art) => removeArtwork(art.objectID)}
+            />
+          </>
+        )}
       </main>
     </div>
   );
