@@ -18,7 +18,7 @@ export function useArtworks() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/search?term=${encodeURIComponent(term)}`);
+      const res = await fetch(`/api/artworks?term=${encodeURIComponent(term)}`);
       if (!res.ok) throw new Error("Network response was not ok");
       const json = await res.json();
 
