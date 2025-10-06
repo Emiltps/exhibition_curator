@@ -1,5 +1,5 @@
 import type { Express } from "express";
-import { app } from "./server.js";
+import { app } from "./server.ts";
 
 const PORT = process.env.PORT || 9090;
 
