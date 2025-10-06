@@ -32,10 +32,9 @@ export async function fetchMetArtworks(term: string): Promise<MetArtwork[]> {
       date: data.objectDate,
       primaryImageSmall: data.primaryImageSmall,
       objectURL: data.objectURL,
+      source: "Met Museum",
     };
   });
 
-  return Promise.all(detailPromises).then((arts) =>
-    arts.map((a) => ({ ...a, source: "Met Museum" }))
-  );
+  return Promise.all(detailPromises);
 }
