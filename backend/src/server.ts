@@ -1,23 +1,16 @@
 import express from "express";
 import cors from "cors";
-import fetch from "node-fetch";
+import artworksRouter from "./routes/artworks.js";
 
 export const app = express();
 
 app.use(cors());
+app.use(express.json());
 
-// Example API route
-app.get("/api/search", async (req, res) => {
-  const term = req.query.term || "Rembrandt";
+// Route to fetch artworks
+app.use("/api/artworks", artworksRouter);
 
-  try {
-    const response = await fetch(
-      `https://collectionapi.metmuseum.org/public/collection/v1/search?q=${term}`
-    );
-    const data = await response.json();
-
-    res.json({ source: "MetMuseum", data });
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch artworks" });
-  }
+//Route to project root
+app.get("/", (req, res) => {
+  res.send("Exhibition Curator Backend is running");
 });
