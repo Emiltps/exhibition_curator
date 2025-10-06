@@ -35,5 +35,7 @@ export async function fetchMetArtworks(term: string): Promise<MetArtwork[]> {
     };
   });
 
-  return Promise.all(detailPromises);
+  return Promise.all(detailPromises).then((arts) =>
+    arts.map((a) => ({ ...a, source: "Met Museum" }))
+  );
 }
