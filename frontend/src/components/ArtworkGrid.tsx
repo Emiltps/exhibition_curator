@@ -1,4 +1,4 @@
-import { Artwork } from "../hooks/useArtwork";
+import type { Artwork } from "../hooks/useArtwork";
 
 interface Props {
   artworks: Artwork[];
