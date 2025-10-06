@@ -1,10 +1,12 @@
 import { useState } from "react";
 import ArtworkGrid from "./components/ArtworkGrid";
 import { useArtworks } from "./hooks/useArtwork";
+import { useExhibition } from "./hooks/useExhibition";
 
 export default function App() {
   const [term, setTerm] = useState("");
   const { artworks, loading, error, fetchArtworks } = useArtworks();
+  const { collection, addArtwork, removeArtwork } = useExhibition();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
