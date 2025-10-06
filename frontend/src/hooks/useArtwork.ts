@@ -3,7 +3,10 @@ import { useState } from "react";
 export interface Artwork {
   objectID: number;
   title: string;
+  artist: string;
+  date: string;
   primaryImageSmall: string;
+  objectURL: string;
 }
 
 export function useArtworks() {
