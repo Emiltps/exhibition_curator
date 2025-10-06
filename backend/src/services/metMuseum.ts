@@ -1,4 +1,4 @@
-export interface Artwork {
+export interface MetArtwork {
   objectID: number;
   title: string;
   artist: string;
@@ -7,7 +7,7 @@ export interface Artwork {
   objectURL: string;
 }
 
-export async function fetchMetArtworks(term: string): Promise<Artwork[]> {
+export async function fetchMetArtworks(term: string): Promise<MetArtwork[]> {
   const searchRes = await fetch(
     `https://collectionapi.metmuseum.org/public/collection/v1/search?q=${encodeURIComponent(
       term
