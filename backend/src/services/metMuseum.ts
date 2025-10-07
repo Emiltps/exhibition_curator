@@ -5,6 +5,7 @@ export interface MetArtwork {
   date: string;
   primaryImageSmall: string;
   objectURL: string;
+  source: string;
 }
 
 export async function fetchMetArtworks(term: string): Promise<MetArtwork[]> {

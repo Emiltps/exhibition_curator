@@ -1,19 +1,22 @@
 import { Router } from "express";
-import { fetchMetArtworks } from "../services/metMuseum.js";
-import { fetchRijksArtworks } from "../services/rijksMuseum.js";
+import { HarvardApiService, mapHarvardToArtwork } from "../services/harvard.js";
 
 const router = Router();
+
+const harvardKey = process.env.HARVARD_API_KEY;
+if (!harvardKey) throw new Error("HARVARD_API_KEY not set in .env");
+
+const harvardService = new HarvardApiService(
+  "https://api.harvardartmuseums.org",
+  harvardKey
+);
 
 router.get("/", async (req, res) => {
   const term = (req.query.term as string) || "Rembrandt";
 
   try {
-    const [metArtworks, rijksArtworks] = await Promise.all([
-      fetchMetArtworks(term),
-      fetchRijksArtworks(term),
-    ]);
-    const artworks = [...metArtworks, ...rijksArtworks];
-
+    const harvardObjects = await harvardService.searchObjects(term, 10);
+    const artworks = harvardObjects.map(mapHarvardToArtwork);
     res.json({ artworks });
   } catch (err) {
     console.error("Error fetching artworks:", err);

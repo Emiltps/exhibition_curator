@@ -1,13 +1,13 @@
 import express from "express";
-import cors from "cors";
+import "dotenv/config";
 import artworksRouter from "./routes/artworks.js";
 
 export const app = express();
 
-app.use(cors());
-app.use(express.json());
+console.log("HARVARD_API_KEY loaded:", process.env.HARVARD_API_KEY); // should log the actual key
 
-// Route to fetch artworks
+//Route to fetch artwork
+app.use(express.json());
 app.use("/api/artworks", artworksRouter);
 
 //Route to project root

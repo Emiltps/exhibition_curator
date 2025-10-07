@@ -12,8 +12,8 @@ export function useExhibition() {
   };
 
   // Remove artwork
-  const removeArtwork = (id: number) => {
-    setCollection((prev) => prev.filter((a) => a.objectID !== id));
+  const removeArtwork = (art: Artwork) => {
+    setCollection((prev) => prev.filter((a) => a.objectID !== art.objectID));
   };
 
   // Clear the collection

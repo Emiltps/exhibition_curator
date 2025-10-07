@@ -49,10 +49,7 @@ export default function App() {
         {collection.length > 0 && (
           <>
             <h2 className="text-xl font-semibold mb-2">Your Exhibition</h2>
-            <ArtworkGrid
-              artworks={collection}
-              onSelect={(art) => removeArtwork(art.objectID)}
-            />
+            <ArtworkGrid artworks={collection} onSelect={removeArtwork} />
           </>
         )}
       </main>
