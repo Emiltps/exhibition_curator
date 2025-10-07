@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { fetchMetArtworks } from "../services/metMuseum.js";
 import { HarvardApiService, mapHarvardToArtwork } from "../services/harvard.js";
 
 const router = Router();
@@ -15,8 +16,15 @@ router.get("/", async (req, res) => {
   const term = (req.query.term as string) || "Rembrandt";
 
   try {
-    const harvardObjects = await harvardService.searchObjects(term, 10);
-    const artworks = harvardObjects.map(mapHarvardToArtwork);
+    const [metArtworks, harvardObjects] = await Promise.all([
+      fetchMetArtworks(term),
+      harvardService.searchObjects(term, 10),
+    ]);
+
+    const harvardArtworks = harvardObjects.map(mapHarvardToArtwork);
+
+    const artworks = [...metArtworks, ...harvardArtworks];
+
     res.json({ artworks });
   } catch (err) {
     console.error("Error fetching artworks:", err);
