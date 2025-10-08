@@ -6,6 +6,7 @@ export function useExhibition() {
 
   // Add an artwork to the collection if not already added
   const addArtwork = (art: Artwork) => {
+    console.log("Adding to exhibition:", art.title);
     setCollection((prev) =>
       prev.find((a) => a.objectID === art.objectID) ? prev : [...prev, art]
     );
