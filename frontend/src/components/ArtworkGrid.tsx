@@ -12,7 +12,6 @@ export default function ArtworkGrid({ artworks, onSelect }: Props) {
         <div
           key={art.objectID}
           className="bg-white rounded-xl shadow p-2 relative"
-          onClick={() => onSelect?.(art)}
         >
           <a href={art.objectURL} target="_blank" rel="noopener noreferrer">
             {art.primaryImageSmall ? (
@@ -27,11 +26,26 @@ export default function ArtworkGrid({ artworks, onSelect }: Props) {
               </div>
             )}
           </a>
+
           <p className="mt-2 text-sm text-center font-semibold">{art.title}</p>
           <p className="text-xs text-center text-gray-500">{art.artist}</p>
+
           <span className="absolute top-2 right-2 bg-black text-white text-[10px] px-1 py-0.5 rounded">
             {art.source}
           </span>
+
+          {onSelect && (
+            <button
+              onClick={(e) => {
+                e.preventDefault(); // prevents <a> click navigation
+                e.stopPropagation();
+                onSelect(art);
+              }}
+              className="mt-2 w-full bg-black text-white text-xs rounded p-1"
+            >
+              Add to Exhibition
+            </button>
+          )}
         </div>
       ))}
     </div>
