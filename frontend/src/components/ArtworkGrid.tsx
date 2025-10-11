@@ -14,7 +14,7 @@ export default function ArtworkGrid({
   mode = "search",
 }: Props) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
       {artworks.map((art) => {
         const added = isInCollection?.(art.objectID);
 
@@ -35,13 +35,13 @@ export default function ArtworkGrid({
         return (
           <div
             key={art.objectID}
-            className="bg-white rounded-xl shadow p-2 flex flex-col"
+            className="bg-white rounded-xl shadow flex flex-col overflow-hidden"
           >
             <a
               href={art.objectURL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full aspect-[5/3] overflow-hidden rounded-md bg-gray-100"
+              className="w-full aspect-[5/3] overflow-hidden bg-gray-100"
             >
               {art.primaryImageSmall ? (
                 <img
@@ -56,25 +56,23 @@ export default function ArtworkGrid({
               )}
             </a>
 
-            <p className="mt-2 text-sm font-semibold truncate">{art.title}</p>
-            <p className="text-xs text-center text-gray-500">{art.artist}</p>
+            <div className="p-2 flex flex-col flex-1">
+              <p className="text-sm font-semibold truncate">{art.title}</p>
+              <p className="text-xs text-gray-500">{art.artist}</p>
 
-            <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-1 py-0.5 rounded animate-pulse">
-              {art.source}
-            </span>
-
-            {onSelect && (
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  onSelect(art);
-                }}
-                className={`mt-2 w-full text-xs rounded p-1 font-medium transition-all duration-200 ${buttonStyle}`}
-              >
-                {buttonLabel}
-              </button>
-            )}
+              {onSelect && (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onSelect(art);
+                  }}
+                  className={`mt-2 w-full text-xs rounded p-1 font-medium transition-all duration-200 ${buttonStyle}`}
+                >
+                  {buttonLabel}
+                </button>
+              )}
+            </div>
           </div>
         );
       })}
