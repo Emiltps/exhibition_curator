@@ -17,6 +17,21 @@ export default function ArtworkGrid({
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
       {artworks.map((art) => {
         const added = isInCollection?.(art.objectID);
+
+        const buttonLabel =
+          mode === "collection"
+            ? "Remove from Exhibition"
+            : added
+            ? "Added ✓"
+            : "Add to Exhibition";
+
+        const buttonStyle =
+          mode === "collection"
+            ? "bg-red-500 text-white"
+            : added
+            ? "bg-gray-700 text-white"
+            : "bg-black text-white";
+
         return (
           <div
             key={art.objectID}
@@ -52,21 +67,11 @@ export default function ArtworkGrid({
                   e.stopPropagation();
                   onSelect(art);
                 }}
-                className={`mt-2 w-full text-xs rounded p-1 ${
-                  mode === "search"
-                    ? added
-                      ? "bg-gray-400 text-white cursor-not-allowed"
-                      : "bg-black text-white"
-                    : "bg-red-500 text-white"
-                }`}
+                className={`mt-2 w-full text-xs rounded p-1 ${buttonStyle}`}
                 disabled={mode === "search" && added}
               >
                 {" "}
-                {mode === "search"
-                  ? added
-                    ? "Added ✓"
-                    : "Add to Exhibition"
-                  : "Remove from Exhibition"}
+                {buttonLabel}
               </button>
             )}
           </div>
