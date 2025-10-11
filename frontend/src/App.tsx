@@ -59,7 +59,7 @@ export default function App() {
         </div>
 
         {collection.length > 0 && (
-          <aside className="w-full lg:w-80 sticky top-4 self-start h-[80vh] overflow-y-auto p-4 bg-white rounded-xl shadow">
+          <aside className="w-full lg:w-96 sticky top-4 self-start max-h-[80vh] overflow-y-auto p-4 bg-white rounded-xl shadow">
             <h2 className="text-xl font-semibold mb-2">Your Exhibition</h2>
             <ArtworkGrid
               artworks={collection}
