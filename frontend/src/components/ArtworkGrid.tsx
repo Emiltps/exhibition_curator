@@ -35,14 +35,19 @@ export default function ArtworkGrid({
         return (
           <div
             key={art.objectID}
-            className="bg-white rounded-xl shadow p-2 relative"
+            className="relative w-full h-40 sm:h-48 md:h-56 overflow-hidden rounded-md bg-gray-100 flex items-center justify-center"
           >
-            <a href={art.objectURL} target="_blank" rel="noopener noreferrer">
+            <a
+              href={art.objectURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative w-full h-40 sm:h-48 md:h-56 overflow-hidden rounded-md bg-gray-100"
+            >
               {art.primaryImageSmall ? (
                 <img
                   src={art.primaryImageSmall}
                   alt={art.title}
-                  className="rounded-md w-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
               ) : (
                 <div className="bg-gray-200 h-40 flex items-center justify-center text-gray-400">
@@ -56,7 +61,7 @@ export default function ArtworkGrid({
             </p>
             <p className="text-xs text-center text-gray-500">{art.artist}</p>
 
-            <span className="absolute top-2 right-2 bg-black text-white text-[10px] px-1 py-0.5 rounded">
+            <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] px-1 py-0.5 rounded animate-pulse">
               {art.source}
             </span>
 
