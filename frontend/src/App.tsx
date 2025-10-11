@@ -22,51 +22,51 @@ export default function App() {
         <h1 className="text-2xl font-bold text-center">Exhibition Curator</h1>
       </header>
 
-      <main className="p-4 max-w-xl mx-auto">
-        <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
-          <input
-            type="text"
-            placeholder="Search artworks..."
-            value={term}
-            onChange={(e) => setTerm(e.target.value)}
-            className="flex-grow border rounded-lg px-3 py-2"
-          />
-          <button
-            type="submit"
-            className="bg-black text-white rounded-lg px-4 py-2"
-          >
-            Search
-          </button>
-        </form>
-
-        {loading && <p className="text-center text-gray-500">Loading...</p>}
-        {error && <p className="text-center text-red-500">{error}</p>}
-
-        {artworks.length > 0 && (
-          <>
-            <h2 className="text-xl font-semibold mb-2">Search Results</h2>
-            <ArtworkGrid
-              artworks={artworks}
-              onSelect={(art) =>
-                isInCollection(art.objectID)
-                  ? removeArtwork(art)
-                  : addArtwork(art)
-              }
-              isInCollection={isInCollection}
-              mode="search"
+      <main className="p-4 max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
+        <div className="flex-1">
+          <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
+            <input
+              type="text"
+              placeholder="Search artworks..."
+              value={term}
+              onChange={(e) => setTerm(e.target.value)}
+              className="flex-grow border rounded-lg px-3 py-2"
             />
-          </>
-        )}
+            <button
+              type="submit"
+              className="bg-black text-white rounded-lg px-4 py-2"
+            >
+              Search
+            </button>
+          </form>
+          {loading && <p className="text-center text-gray-500">Loading...</p>}
+          {error && <p className="text-center text-red-500">{error}</p>}
+          {artworks.length > 0 && (
+            <>
+              <h2 className="text-xl font-semibold mb-2">Search Results</h2>
+              <ArtworkGrid
+                artworks={artworks}
+                onSelect={(art) =>
+                  isInCollection(art.objectID)
+                    ? removeArtwork(art)
+                    : addArtwork(art)
+                }
+                isInCollection={isInCollection}
+                mode="search"
+              />
+            </>
+          )}
+        </div>
 
         {collection.length > 0 && (
-          <>
+          <aside className="w-full lg:w-80 sticky top-4 self-start h-[80vh] overflow-y-auto p-4 bg-white rounded-xl shadow">
             <h2 className="text-xl font-semibold mb-2">Your Exhibition</h2>
             <ArtworkGrid
               artworks={collection}
               onSelect={removeArtwork}
               mode="collection"
             />
-          </>
+          </aside>
         )}
       </main>
     </div>
