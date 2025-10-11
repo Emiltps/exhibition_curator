@@ -47,7 +47,11 @@ export default function App() {
             <h2 className="text-xl font-semibold mb-2">Search Results</h2>
             <ArtworkGrid
               artworks={artworks}
-              onSelect={addArtwork}
+              onSelect={(art) =>
+                isInCollection(art.objectID)
+                  ? removeArtwork(art)
+                  : addArtwork(art)
+              }
               isInCollection={isInCollection}
               mode="search"
             />

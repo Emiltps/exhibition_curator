@@ -68,7 +68,6 @@ export default function ArtworkGrid({
                   onSelect(art);
                 }}
                 className={`mt-2 w-full text-xs rounded p-1 ${buttonStyle}`}
-                disabled={mode === "search" && added}
               >
                 {" "}
                 {buttonLabel}
