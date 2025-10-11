@@ -67,7 +67,7 @@ export default function ArtworkGrid({
                   e.stopPropagation();
                   onSelect(art);
                 }}
-                className={`mt-2 w-full text-xs rounded p-1 ${buttonStyle}`}
+                className={`mt-2 w-full text-xs rounded p-1 font-medium transition-all duration-200 ${buttonStyle}`}
               >
                 {" "}
                 {buttonLabel}
