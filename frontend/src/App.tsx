@@ -13,6 +13,9 @@ export default function App() {
     if (term.trim()) fetchArtworks(term);
   };
 
+  const isInCollection = (id: number) =>
+    collection.some((a) => a.objectID === id);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="p-4 bg-white shadow">
@@ -42,14 +45,23 @@ export default function App() {
         {artworks.length > 0 && (
           <>
             <h2 className="text-xl font-semibold mb-2">Search Results</h2>
-            <ArtworkGrid artworks={artworks} onSelect={addArtwork} />
+            <ArtworkGrid
+              artworks={artworks}
+              onSelect={addArtwork}
+              isInCollection={isInCollection}
+              mode="search"
+            />
           </>
         )}
 
         {collection.length > 0 && (
           <>
             <h2 className="text-xl font-semibold mb-2">Your Exhibition</h2>
-            <ArtworkGrid artworks={collection} onSelect={removeArtwork} />
+            <ArtworkGrid
+              artworks={collection}
+              onSelect={removeArtwork}
+              mode="collection"
+            />
           </>
         )}
       </main>
