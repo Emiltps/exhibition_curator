@@ -27,10 +27,10 @@ export default function ArtworkGrid({
 
         const buttonStyle =
           mode === "collection"
-            ? "bg-red-500 text-white"
+            ? "bg-red-500 hover:bg-red-600 text-white"
             : added
-            ? "bg-gray-700 text-white"
-            : "bg-black text-white";
+            ? "bg-gray-700 hover:bg-gray-800 text-white"
+            : "bg-black hover:bg-gray-900 text-white";
 
         return (
           <div
