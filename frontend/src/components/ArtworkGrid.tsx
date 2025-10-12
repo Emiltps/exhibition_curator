@@ -14,7 +14,11 @@ export default function ArtworkGrid({
   mode = "search",
 }: Props) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    <div
+      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+      role="list"
+      aria-label="Artwork results"
+    >
       {artworks.map((art) => {
         const added = isInCollection?.(art.objectID);
 
@@ -33,9 +37,11 @@ export default function ArtworkGrid({
             : "bg-black hover:bg-gray-900 text-white";
 
         return (
-          <div
+          <article
             key={art.objectID}
             className="bg-white rounded-xl shadow flex flex-col overflow-hidden"
+            aria-labelledby={`art-title-${art.objectID}`}
+            aria-describedby={`art-artist-${art.objectID}`}
           >
             <a
               href={art.objectURL}
@@ -48,9 +54,14 @@ export default function ArtworkGrid({
                   src={art.primaryImageSmall}
                   alt={art.title}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               ) : (
-                <div className="flex items-center justify-center w-full h-full text-gray-400">
+                <div
+                  className="flex items-center justify-center w-full h-full text-gray-400"
+                  role="img"
+                  aria-label="No image available"
+                >
                   No image
                 </div>
               )}
@@ -58,7 +69,9 @@ export default function ArtworkGrid({
 
             <div className="p-2 flex flex-col flex-1">
               <p className="text-sm font-semibold truncate">{art.title}</p>
-              <p className="text-xs text-gray-500">{art.artist}</p>
+              <p className="text-xs text-gray-500">
+                {art.artist || "Unknown artist"}
+              </p>
 
               {onSelect && (
                 <button
@@ -73,7 +86,7 @@ export default function ArtworkGrid({
                 </button>
               )}
             </div>
-          </div>
+          </article>
         );
       })}
     </div>
