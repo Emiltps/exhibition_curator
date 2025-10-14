@@ -43,6 +43,6 @@ Never commit .env files
 
 Validate all external API responses before serving
 
-Consider adding rate limiting and input sanitization
+Consider adding rate limiting and input sanitisation
 
 Use HTTPS and environment-specific configurations for production
