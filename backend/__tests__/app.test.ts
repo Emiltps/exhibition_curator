@@ -1,5 +1,5 @@
 import request from "supertest";
-import { app } from "../src/server.js"; // ESM import
+import { app } from "../src/server.js";
 
 describe("API routes", () => {
   test("GET / should return 200 and a message", async () => {
