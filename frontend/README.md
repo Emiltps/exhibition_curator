@@ -1,9 +1,9 @@
-🎨 Exhibition Curator — Frontend
+# 🎨 Exhibition Curator — Frontend
 
 The frontend is a React + Vite single-page application styled with TailwindCSS.
 It allows users to explore artworks, curate virtual exhibitions, and manage collections dynamically.
 
-🧩 Features
+# 🧩 Features
 
 Responsive gallery grid layout
 
@@ -17,7 +17,7 @@ Fetches artwork data from backend API endpoints
 
 Smooth transitions and a minimalist, modern UI
 
-🚀 Development
+# 🚀 Development
 
 1. Install dependencies
    npm install
@@ -28,14 +28,15 @@ Smooth transitions and a minimalist, modern UI
 Then open http://localhost:5173
 in your browser.
 
-🧰 Tech Stack
+# 🧰 Tech Stack
+
 Tool Purpose
 React 19 UI library
 Vite Fast build and development
 TailwindCSS Utility-first styling
 TypeScript Type safety and scalability
 
-♿ Accessibility
+# ♿ Accessibility
 
 All images include descriptive alt text
 
