@@ -1,9 +1,9 @@
-🧠 Exhibition Curator — Backend
+# 🧠 Exhibition Curator — Backend
 
 The backend is a Node.js + Express + TypeScript API that aggregates data from public art APIs
 and exposes endpoints for the React frontend.
 
-🚀 Setup
+# 🚀 Setup
 
 1. Install dependencies
    npm install
@@ -13,20 +13,23 @@ and exposes endpoints for the React frontend.
 
 The server will start at http://localhost:9090
 
-⚙️ Environment Variables
+# ⚙️ Environment Variables
 
 Create a .env file in /backend with the following variables:
 
 HARVARD_API_KEY=your_key_here
 PORT=9090
 
-🔑 Currently, only the Harvard Art Museums API requires an API key.
+# 🔑 Currently, only the Harvard Art Museums API requires an API key.
 
-🧩 API Endpoints
+# 🧩 API Endpoints
+
 Method Route Description Response
 GET / Health check Plain text
 GET /api/artworks Fetch artworks from external APIs JSON
-🧰 Tech Stack
+
+# 🧰 Tech Stack
+
 Tool Purpose
 Node.js + Express Server and routing
 TypeScript Strong typing and maintainability
@@ -37,7 +40,7 @@ Each route is modularized under src/routes/
 
 Supports future caching or pagination as data scales
 
-🔒 Security & Best Practices
+# 🔒 Security & Best Practices
 
 Never commit .env files
 
