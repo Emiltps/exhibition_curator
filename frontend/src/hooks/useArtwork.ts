@@ -9,6 +9,7 @@ export interface Artwork {
   objectURL: string;
   source: string;
 }
+const BASE_URL = import.meta.env.VITE_API_BASE_URL; //
 
 export function useArtworks() {
   const [artworks, setArtworks] = useState<Artwork[]>([]);
@@ -19,7 +20,9 @@ export function useArtworks() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/artworks?term=${encodeURIComponent(term)}`);
+      const res = await fetch(
+        `${BASE_URL}/api/artworks?term=${encodeURIComponent(term)}`
+      );
       if (!res.ok) throw new Error("Network response was not ok");
       const json = await res.json();
 
