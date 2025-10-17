@@ -7,9 +7,14 @@ export const app = express();
 
 console.log("HARVARD_API_KEY loaded:", !!process.env.HARVARD_API_KEY);
 
+const frontendOrigin =
+  process.env.NODE_ENV === "production"
+    ? "https://your-frontend-on-render"
+    : "*";
+
 app.use(
   cors({
-    origin: "https://exhibition-curator-1.onrender.com",
+    origin: frontendOrigin,
   })
 );
 
