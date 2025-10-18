@@ -19,6 +19,7 @@ Built with a React (Vite + Tailwind) frontend and a TypeScript + Express backend
    cd exhibition_curator
 
 2. Install dependencies
+   npm install  
    npm install --prefix frontend
    npm install --prefix backend
 
