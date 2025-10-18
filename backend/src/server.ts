@@ -9,7 +9,7 @@ console.log("HARVARD_API_KEY loaded:", !!process.env.HARVARD_API_KEY);
 
 const frontendOrigin =
   process.env.NODE_ENV === "production"
-    ? "https://your-frontend-on-render"
+    ? "https://exhibition-curator-1.onrender.com/"
     : "*";
 
 app.use(
