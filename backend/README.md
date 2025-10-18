@@ -1,7 +1,8 @@
 # 🧠 Exhibition Curator — Backend
 
-The backend is a Node.js + Express + TypeScript API that aggregates data from public art APIs
-and exposes endpoints for the React frontend.
+The backend is a Node.js + Express + TypeScript API that aggregates data from public art sources (e.g. Harvard Art Museums, The Met Museum) and exposes endpoints for the React frontend.
+
+🌐 Live API: https://exhibition-curator-dq5i.onrender.com
 
 # 🚀 Setup
 
@@ -28,15 +29,27 @@ Method Route Description Response
 GET / Health check Plain text
 GET /api/artworks Fetch artworks from external APIs JSON
 
+# 🌐 Deployment (Render)
+
+Service type: Web Service
+Root directory: backend
+
+Build command:
+npm install && npm run build
+
+Start command:
+npm start
+
+Environment variables: same as in .env
+
 # 🧰 Tech Stack
 
-Tool Purpose
 Node.js + Express Server and routing
 TypeScript Strong typing and maintainability
 Dotenv Environment variable management
 ESM modules Modern module system (module: "nodenext")
 
-Each route is modularized under src/routes/
+Each route is modularised under src/routes/
 
 Supports future caching or pagination as data scales
 
