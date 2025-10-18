@@ -18,11 +18,9 @@ app.use(
   })
 );
 
-//Route to fetch artwork
 app.use(express.json());
 app.use("/api/artworks", artworksRouter);
 
-//Route to project root
 app.get("/", (req, res) => {
   res.send("Exhibition Curator Backend is running");
 });

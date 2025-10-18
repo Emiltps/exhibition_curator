@@ -20,7 +20,6 @@ export async function fetchMetArtworks(term: string): Promise<MetArtwork[]> {
 
   const objectIDs = searchData.objectIDs.slice(0, 10); // first 10 results
 
-  // Fetch details for each artwork
   const detailPromises = objectIDs.map(async (id: number) => {
     const res = await fetch(
       `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`

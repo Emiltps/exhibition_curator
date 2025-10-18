@@ -21,9 +21,6 @@ export class HarvardApiService {
     this.apiKey = apiKey;
   }
 
-  /**
-   * Search objects by keyword (free-text) with images
-   */
   async searchObjects(
     searchQuery: string,
     limit = 10
@@ -58,9 +55,6 @@ export class HarvardApiService {
   }
 }
 
-/**
- * Map Harvard object to unified artwork format
- */
 export function mapHarvardToArtwork(harvard: HarvardObject) {
   return {
     objectID: harvard.id,
